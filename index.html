@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌌 Galaxia del Amor ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#050510;
+overflow-x:hidden;
+color:white;
+min-height:100vh;
+}
+
+#estrellas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+overflow:hidden;
+}
+
+.estrella{
+position:absolute;
+color:white;
+animation:subir linear infinite;
+}
+
+@keyframes subir{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+.container{
+width:90%;
+max-width:900px;
+margin:30px auto;
+text-align:center;
+}
+
+.planeta{
+width:220px;
+height:220px;
+margin:auto;
+border-radius:50%;
+overflow:hidden;
+border:5px solid rgba(255,255,255,.3);
+box-shadow:0 0 50px #ff4d6d;
+animation:latido 2s infinite;
+cursor:pointer;
+}
+
+.planeta img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+@keyframes latido{
+50%{
+transform:scale(1.05);
+}
+}
+
+.orbita{
+position:relative;
+width:350px;
+height:350px;
+margin:auto;
+}
+
+.palabra{
+position:absolute;
+font-size:18px;
+color:#ffb3c6;
+font-weight:bold;
+animation:girar 20s linear infinite;
+}
+
+@keyframes girar{
+from{
+transform:rotate(0deg) translateX(160px) rotate(0deg);
+}
+to{
+transform:rotate(360deg) translateX(160px) rotate(-360deg);
+}
+}
+
+.carta{
+display:none;
+margin-top:30px;
+background:rgba(255,255,255,.08);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+line-height:1.9;
+text-align:left;
+}
+
+.foto{
+width:90%;
+max-width:320px;
+display:block;
+margin:20px auto;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,.3);
+}
+
+h1{
+margin-top:20px;
+margin-bottom:10px;
+}
+
+audio{
+width:100%;
+max-width:450px;
+margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="estrellas"></div>
+
+<div class="container">
+
+<h1>🌌 Nuestra Galaxia ❤️</h1>
+
+<p>
+19 de abril ❤️ El día en que comenzó nuestra historia.
+</p>
+
+<div class="orbita">
+
+<div class="palabra" style="top:45%;left:45%;">❤️</div>
+
+<div class="planeta" onclick="abrirCarta()">
+<img src="nuestra_foto.jpg">
+</div>
+
+</div>
+
+<audio controls autoplay loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="carta" id="carta">
+
+<img src="ella.jpg" class="foto">
+
+<h2>Para ti, mi amor ❤️</h2>
+
+<p>
+Hoy cumplimos dos meses juntos y quería hacer algo diferente para ti.
+</p>
+
+<p>
+Si alguien me preguntara qué ha sido lo mejor que me pasó últimamente, no tendría ninguna duda: tú.
+</p>
+
+<p>
+Desde que llegaste a mi vida, todo es más bonito, más cálido y más feliz. Estar contigo se ha convertido en lo mejor de mis días.
+</p>
+
+<p>
+Gracias por cada conversación, cada sonrisa, cada mensaje y cada momento que hemos compartido juntos.
+</p>
+
+<p>
+Me encanta escucharte, saber cómo estuvo tu día y seguir descubriendo poco a poco la increíble persona que eres.
+</p>
+
+<p>
+Hay canciones que me recuerdan a ti, lugares que me hacen pensar en ti y momentos que son especiales simplemente porque tú formas parte de ellos.
+</p>
+
+<p>
+Entre millones de personas tuve la suerte de encontrarte a ti, y sinceramente no cambiaría eso por nada.
+</p>
+
+<p>
+No sé cómo lo hiciste, pero llegaste y te convertiste en lo más bonito que tengo.
+</p>
+
+<p>
+Gracias por tu cariño, por tu paciencia, por tu confianza y por permitirme formar parte de tu vida.
+</p>
+
+<p>
+Quizás llevamos poco tiempo juntos, pero han sido suficientes para crear recuerdos que guardaré siempre con mucho cariño.
+</p>
+
+<p>
+No sé qué nos espera en el futuro, pero sí sé que quiero seguir compartiendo momentos contigo y seguir construyendo recuerdos hermosos a tu lado.
+</p>
+
+<p>
+Gracias por estos dos meses tan especiales.
+</p>
+
+<p>
+Y gracias, sobre todo, porque conocerte fue una de las mejores cosas que me pasó este año. ❤️
+</p>
+
+<h3 style="text-align:center;margin-top:20px;">
+❤️ Te quiero muchísimo ❤️
+</h3>
+
+</div>
+
+</div>
+
+<script>
+
+function abrirCarta(){
+document.getElementById("carta").style.display="block";
+window.scrollTo({
+top:document.body.scrollHeight,
+behavior:"smooth"
+});
+}
+
+const estrellas=document.getElementById("estrellas");
+
+for(let i=0;i<120;i++){
+
+let e=document.createElement("div");
+
+e.classList.add("estrella");
+
+e.innerHTML=Math.random()>0.5?"⭐":"✨";
+
+e.style.left=Math.random()*100+"vw";
+
+e.style.fontSize=(10+Math.random()*20)+"px";
+
+e.style.animationDuration=(5+Math.random()*10)+"s";
+
+estrellas.appendChild(e);
+
+}
+
+</script>
+
+</body>
+</html>
