@@ -54,16 +54,27 @@ margin:30px auto;
 text-align:center;
 }
 
+/* Órbita contenedora para centrar el planeta y las palabras */
+.orbita {
+position:relative;
+width:320px;
+height:320px;
+margin:40px auto;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
 .planeta{
-width:220px;
-height:220px;
-margin:auto;
+width:200px;
+height:200px;
 border-radius:50%;
 overflow:hidden;
 border:5px solid rgba(255,255,255,.3);
 box-shadow:0 0 50px #ff4d6d;
 animation:latido 2s infinite;
 cursor:pointer;
+z-index: 5;
 }
 
 .planeta img{
@@ -78,27 +89,23 @@ transform:scale(1.05);
 }
 }
 
-.orbita{
-position:relative;
-width:350px;
-height:350px;
-margin:auto;
-}
-
+/* Estilo para las letras que orbitan */
 .palabra{
 position:absolute;
-font-size:18px;
+font-size:16px;
 color:#ffb3c6;
 font-weight:bold;
-animation:girar 20s linear infinite;
+white-space: nowrap;
+/* Variables CSS dinámicas pasadas por JavaScript */
+animation: girar var(--duracion) linear infinite;
 }
 
 @keyframes girar{
 from{
-transform:rotate(0deg) translateX(160px) rotate(0deg);
+transform: rotate(var(--anguloInicial)) translateX(140px) rotate(calc(-1 * var(--anguloInicial)));
 }
 to{
-transform:rotate(360deg) translateX(160px) rotate(-360deg);
+transform: rotate(calc(var(--anguloInicial) + 360deg)) translateX(140px) rotate(calc(-1 * (var(--anguloInicial) + 360deg)));
 }
 }
 
@@ -109,6 +116,7 @@ background:rgba(255,255,255,.08);
 padding:25px;
 border-radius:20px;
 backdrop-filter:blur(10px);
+-webkit-backdrop-filter:blur(10px);
 line-height:1.9;
 text-align:left;
 }
@@ -125,12 +133,14 @@ box-shadow:0 0 20px rgba(255,255,255,.3);
 h1{
 margin-top:20px;
 margin-bottom:10px;
+text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
 }
 
 audio{
 width:100%;
 max-width:450px;
 margin-top:20px;
+border-radius: 20px;
 }
 </style>
 </head>
@@ -147,14 +157,11 @@ margin-top:20px;
 19 de abril ❤️ El día en que comenzó nuestra historia.
 </p>
 
-<div class="orbita">
-
-<div class="palabra" style="top:45%;left:45%;">❤️</div>
-
-<div class="planeta" onclick="abrirCarta()">
-<img src="nuestra_foto.jpg">
-</div>
-
+<!-- El universo interactivo con las palabras orbitando -->
+<div class="orbita" id="espacio-orbita">
+    <div class="planeta" onclick="abrirCarta()">
+        <img src="nuestra_foto.jpg" alt="Nuestra Foto">
+    </div>
 </div>
 
 <audio controls autoplay loop>
@@ -163,7 +170,7 @@ margin-top:20px;
 
 <div class="carta" id="carta">
 
-<img src="ella.jpg" class="foto">
+<img src="ella.jpg" class="foto" alt="Ella">
 
 <h2>Para ti, mi amor ❤️</h2>
 
@@ -230,32 +237,50 @@ Y gracias, sobre todo, porque conocerte fue una de las mejores cosas que me pas�
 <script>
 
 function abrirCarta(){
-document.getElementById("carta").style.display="block";
-window.scrollTo({
-top:document.body.scrollHeight,
-behavior:"smooth"
-});
+    // Muestra la carta oculta
+    const carta = document.getElementById("carta");
+    carta.style.display = "block";
+    
+    // Pequeño retraso para que el navegador procese el bloque y haga el scroll perfecto hacia abajo
+    setTimeout(() => {
+        carta.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 100);
 }
 
-const estrellas=document.getElementById("estrellas");
+// --- GENERADOR DE ESTRELLAS DE FONDO ---
+const estrellasContainer = document.getElementById("estrellas");
 
 for(let i=0;i<120;i++){
-
-let e=document.createElement("div");
-
-e.classList.add("estrella");
-
-e.innerHTML=Math.random()>0.5?"⭐":"✨";
-
-e.style.left=Math.random()*100+"vw";
-
-e.style.fontSize=(10+Math.random()*20)+"px";
-
-e.style.animationDuration=(5+Math.random()*10)+"s";
-
-estrellas.appendChild(e);
-
+    let e=document.createElement("div");
+    e.classList.add("estrella");
+    e.innerHTML=Math.random()>0.5?"⭐":"✨";
+    e.style.left=Math.random()*100+"vw";
+    e.style.fontSize=(10+Math.random()*20)+"px";
+    e.style.animationDuration=(5+Math.random()*10)+"s";
+    estrellasContainer.appendChild(e);
 }
+
+// --- GENERADOR DE PALABRAS EN ÓRBITA CIRCULAR ---
+const orbitaContainer = document.getElementById("espacio-orbita");
+
+// El mensaje desglosado en palabras que rodearán tu foto
+const listaPalabras = ["TE", "QUIERO", "MUCHÍSIMO", "MI", "AMOR", "❤️", "SIEMPRE", "JUNTOS", "✨"];
+const totalPalabras = listaPalabras.length;
+
+listaPalabras.forEach((texto, index) => {
+    let divPalabra = document.createElement("div");
+    divPalabra.classList.add("palabra");
+    divPalabra.textContent = texto;
+
+    // Distribución matemática perfecta en 360 grados para que no se amontonen
+    let angulo = (360 / totalPalabras) * index;
+    
+    // Pasamos los valores dinámicos al CSS
+    divPalabra.style.setProperty('--anguloInicial', angulo + 'deg');
+    divPalabra.style.setProperty('--duracion', '15s'); // Velocidad de rotación general
+
+    orbitaContainer.appendChild(divPalabra);
+});
 
 </script>
 
