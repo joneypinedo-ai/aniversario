@@ -20,7 +20,7 @@ color:white;
 min-height:100vh;
 }
 
-/* Canvas para el fondo avanzado de galaxias y agujero negro */
+/* Canvas para el fondo avanzado de galaxias, tulipanes y agujero negro */
 #espacio-profundo{
 position:fixed;
 top:0;
@@ -141,10 +141,10 @@ opacity: 0.85;
 
 <div class="container">
 
-<h1>🌌 Nuestro Universo ❤️</h1>
+<h1>🌌 Nuestro Aniversario ❤️</h1>
 
 <p>
-❤️Un fecha como hoy Mi amor❤️
+❤️Una fecha como hoy mi amor❤️
 </p>
 
 <div class="orbita" id="espacio-orbita">
@@ -194,14 +194,16 @@ function abrirCarta(){
     }, 100);
 }
 
-// --- SCRIPT DE COSMOS REALISTA AVANZADO ---
+// --- SCRIPT DE COSMOS REALISTA CON JARDÍN DE TULIPANES ---
 const canvas = document.getElementById('espacio-profundo');
 const ctx = canvas.getContext('2d');
 
 let estrellas = [];
 let miniGalaxias = [];
+let tulipanes = [];
+
 const centroX = () => canvas.width / 2;
-const centroY = () => canvas.height * 0.35; // Órbita detrás del planeta
+const centroY = () => canvas.height * 0.35; 
 
 function redimensionar() {
     canvas.width = window.innerWidth;
@@ -210,11 +212,10 @@ function redimensionar() {
 redimensionar();
 window.addEventListener('resize', redimensionar);
 
-// Clase para Estrellas con Brillo Realista y Parpadeo Cúbico
+// Clase para Estrellas con Brillo Realista y Parpadeo
 class EstrellaRealista {
     constructor() {
         this.reset();
-        // Distribuirlas aleatoriamente al inicio para que no salgan todas al mismo tiempo
         let angulo = Math.random() * Math.PI * 2;
         let distancia = Math.random() * Math.max(canvas.width, canvas.height) * 0.5;
         this.x = centroX() + Math.cos(angulo) * distancia;
@@ -226,18 +227,11 @@ class EstrellaRealista {
         let distancia = Math.max(canvas.width, canvas.height) * 0.6;
         this.x = centroX() + Math.cos(angulo) * distancia;
         this.y = centroY() + Math.sin(angulo) * distancia;
-        this.radio = Math.random() * 1.8 + 0.4;
+        this.radio = Math.random() * 1.6 + 0.4;
         this.velocidadBase = Math.random() * 0.8 + 0.4;
         
-        // Colores estelares reales en base a temperatura espacial
-        const coloresValidos = [
-            'rgba(255, 255, 255, ',   // Blanco puro
-            'rgba(173, 216, 230, ',   // Azulada joven (Glow)
-            'rgba(255, 200, 210, ',   // Sutil Rosa/Fucsia amoroso
-            'rgba(255, 245, 220, '    // Gigante Amarilla cálida
-        ];
+        const coloresValidos = ['rgba(255, 255, 255, ', 'rgba(173, 216, 230, ', 'rgba(255, 200, 210, '];
         this.colorElegido = coloresValidos[Math.floor(Math.random() * coloresValidos.length)];
-        
         this.faseParpadeo = Math.random() * Math.PI;
         this.velocidadParpadeo = Math.random() * 0.04 + 0.01;
     }
@@ -250,42 +244,92 @@ class EstrellaRealista {
         if (distancia < 35) { 
             this.reset();
         } else {
-            // Atracción gravitatoria física simulada hacia el centro del Agujero Negro
-            let efectoGravedad = (300 / distancia) + this.velocidadBase; 
+            let efectoGravedad = (250 / distancia) + this.velocidadBase; 
             this.x += (dx / distancia) * efectoGravedad + (dy / distancia) * 0.4;
             this.y += (dy / distancia) * efectoGravedad - (dx / distancia) * 0.4;
         }
-
-        // Variación del brillo estelar
         this.faseParpadeo += this.velocidadParpadeo;
     }
 
     dibujar() {
-        // Opacidad variable simulando titileo atmosférico real
         let opacidad = 0.4 + Math.abs(Math.sin(this.faseParpadeo)) * 0.6;
-        
         ctx.save();
-        // Dibujar el núcleo de la estrella
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radio, 0, Math.PI * 2);
         ctx.fillStyle = this.colorElegido + opacidad + ')';
         ctx.fill();
-
-        // Efecto Destello/Glow (Solo para estrellas medianas y grandes)
-        if (this.radio > 1.1) {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radio * 3, 0, Math.PI * 2);
-            let gradienteDestello = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radio * 3);
-            gradienteDestello.addColorStop(0, this.colorElegido + (opacidad * 0.3) + ')');
-            gradienteDestello.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = gradienteDestello;
-            ctx.fill();
-        }
         ctx.restore();
     }
 }
 
-// Clase para Nebulosas Espirales de fondo
+// NUEVA CLASE: Tulipanes Cósmicos Dibujados con Vectores
+class TulipánFlotante {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + (Math.random() * 200);
+        this.tamano = Math.random() * 12 + 10; // Tamaño de la flor
+        this.velocidadY = Math.random() * 0.6 + 0.3; // Velocidad de subida
+        this.oscilacionX = Math.random() * 0.02; // Movimiento de lado a lado
+        this.faseX = Math.random() * 100;
+        this.anguloRotacion = (Math.random() - 0.5) * 0.3;
+        this.colorFlor = Math.random() > 0.5 ? '#ff4d6d' : '#ff7aa2'; // Rosa o Rojo tulipán
+    }
+
+    actualizar() {
+        this.y -= this.velocidadY;
+        this.faseX += this.oscilacionX;
+        this.x += Math.sin(this.faseX) * 0.25;
+
+        // Si sale por arriba, se reinicia abajo
+        if (this.y < -50) {
+            this.y = canvas.height + 50;
+            this.x = Math.random() * canvas.width;
+        }
+    }
+
+    dibujar() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.anguloRotacion);
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.colorFlor;
+
+        // Dibujar el tallo verde sutil
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.quadraticCurveTo(5, this.tamano * 0.8, 2, this.tamano * 1.5);
+        ctx.strokeStyle = '#4ade80';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+
+        // Pétalo izquierdo
+        ctx.beginPath();
+        ctx.fillStyle = this.colorFlor;
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.tamano * 0.6, -this.tamano * 0.4, -this.tamano * 0.5, -this.tamano * 1.2, 0, -this.tamano);
+        ctx.bezierCurveTo(-this.tamano * 0.2, -this.tamano * 0.6, -this.tamano * 0.1, -this.tamano * 0.2, 0, 0);
+        ctx.fill();
+
+        // Pétalo derecho
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(this.tamano * 0.6, -this.tamano * 0.4, this.tamano * 0.5, -this.tamano * 1.2, 0, -this.tamano);
+        ctx.bezierCurveTo(this.tamano * 0.2, -this.tamano * 0.6, this.tamano * 0.1, -this.tamano * 0.2, 0, 0);
+        ctx.fill();
+
+        // Pétalo central principal
+        ctx.beginPath();
+        ctx.fillStyle = this.colorFlor == '#ff4d6d' ? '#ff7aa2' : '#ffb3c6'; // Tono ligeramente más claro para el centro
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.tamano * 0.3, -this.tamano * 0.3, -this.tamano * 0.3, -this.tamano * 1.3, 0, -this.tamano * 1.1);
+        ctx.bezierCurveTo(this.tamano * 0.3, -this.tamano * 1.3, this.tamano * 0.3, -this.tamano * 0.3, 0, 0);
+        ctx.fill();
+
+        ctx.restore();
+    }
+}
+
+// Clase para Nebulosas de fondo
 class MiniGalaxia {
     constructor() {
         this.x = Math.random() * canvas.width;
@@ -293,11 +337,11 @@ class MiniGalaxia {
         this.radioMax = Math.random() * 50 + 30;
         this.anguloRotacion = 0;
         this.velocidadRotacion = (Math.random() * 0.01) + 0.003;
-        this.colorBase = Math.random() > 0.5 ? 'rgba(139, 92, 246, 0.12)' : 'rgba(236, 72, 153, 0.12)';
+        this.colorBase = 'rgba(139, 92, 246, 0.1)';
     }
     actualizar() {
         this.anguloRotacion += this.velocidadRotacion;
-        this.y -= 0.15; // Flotan suavemente hacia arriba
+        this.y -= 0.1;
         if (this.y < -70) {
             this.y = canvas.height + 70;
             this.x = Math.random() * canvas.width;
@@ -307,44 +351,33 @@ class MiniGalaxia {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.anguloRotacion);
-        
         let gradiente = ctx.createRadialGradient(0, 0, 0, 0, 0, this.radioMax);
-        gradiente.addColorStop(0, this.colorBase.replace('0.12', '0.5'));
-        gradiente.addColorStop(0.4, this.colorBase);
+        gradiente.addColorStop(0, 'rgba(236, 72, 153, 0.3)');
+        gradiente.addColorStop(0.5, this.colorBase);
         gradiente.addColorStop(1, 'rgba(0,0,0,0)');
         ctx.fillStyle = gradiente;
         ctx.beginPath();
         ctx.arc(0, 0, this.radioMax, 0, Math.PI * 2);
         ctx.fill();
-
-        // Brazos estelares de la galaxia de fondo
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-        for (let j = 0; j < 35; j++) {
-            let t = j / 35;
-            let a = t * Math.PI * 5;
-            let r = t * this.radioMax;
-            ctx.fillRect(Math.cos(a) * r, Math.sin(a) * r, 1.2, 1.2);
-            ctx.fillRect(-Math.cos(a) * r, -Math.sin(a) * r, 1.2, 1.2);
-        }
         ctx.restore();
     }
 }
 
-// Inicializar elementos cósmicos
-for (let i = 0; i < 160; i++) estrellas.push(new EstrellaRealista());
-for (let i = 0; i < 4; i++) miniGalaxias.push(new MiniGalaxia());
+// Inicializar elementos cósmicos y botánicos
+for (let i = 0; i < 140; i++) estrellas.push(new EstrellaRealista());
+for (let i = 0; i < 3; i++) miniGalaxias.push(new MiniGalaxia());
+for (let i = 0; i < 12; i++) tulipanes.push(new TulipánFlotante()); // 12 tulipanes flotantes en pantalla
 
 function animarUniverso() {
-    // Fondo espacial profundo con persistencia suave
     ctx.fillStyle = 'rgba(4, 4, 12, 0.25)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Brillo del Agujero Negro detrás del planeta
+    // Agujero Negro detrás del planeta
     let cX = centroX();
     let cY = centroY();
     let brilloAgujero = ctx.createRadialGradient(cX, cY, 80, cX, cY, 190);
-    brilloAgujero.addColorStop(0, 'rgba(244, 63, 94, 0.32)'); // Horizonte de eventos rosa
-    brilloAgujero.addColorStop(0.4, 'rgba(124, 58, 237, 0.14)'); // Nebulosa púrpura exterior
+    brilloAgujero.addColorStop(0, 'rgba(244, 63, 94, 0.3)'); 
+    brilloAgujero.addColorStop(0.5, 'rgba(124, 58, 237, 0.12)'); 
     brilloAgujero.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = brilloAgujero;
     ctx.beginPath();
@@ -354,6 +387,7 @@ function animarUniverso() {
     // Renderizar componentes
     miniGalaxias.forEach(g => { g.actualizar(); g.dibujar(); });
     estrellas.forEach(e => { e.actualizar(); e.dibujar(); });
+    tulipanes.forEach(t => { t.actualizar(); t.dibujar(); }); // Dibujar el hermoso jardín flotante
 
     requestAnimationFrame(animarUniverso);
 }
@@ -361,7 +395,7 @@ animarUniverso();
 
 // --- GENERADOR DE PALABRAS EN ÓRBITA ---
 const orbitaContainer = document.getElementById("espacio-orbita");
-const listaPalabras = ["TE", "QUIERO", "MUCHÍSIMO", "MI", "AMOR", "❤️", "✨"];
+const listaPalabras = ["TE", "QUIERO", "MUCHÍSIMO", "MI", "AMOR", "❤️", "SIEMPRE", "JUNTOS", "✨"];
 const totalPalabras = listaPalabras.length;
 
 listaPalabras.forEach((texto, index) => {
