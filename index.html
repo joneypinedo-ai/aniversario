@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌌 Galaxia del Amor ❤️</title>
+<title>🌌 Universo de Nuestro Amor ❤️</title>
 
 <style>
 *{
@@ -14,37 +14,20 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#050510;
+background:#020208;
 overflow-x:hidden;
 color:white;
 min-height:100vh;
 }
 
-#estrellas{
+/* Canvas para el fondo avanzado de galaxias y agujero negro */
+#espacio-profundo{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
 z-index:-1;
-overflow:hidden;
-}
-
-.estrella{
-position:absolute;
-color:white;
-animation:subir linear infinite;
-}
-
-@keyframes subir{
-from{
-transform:translateY(100vh);
-opacity:1;
-}
-to{
-transform:translateY(-100px);
-opacity:0;
-}
 }
 
 .container{
@@ -52,27 +35,30 @@ width:90%;
 max-width:900px;
 margin:30px auto;
 text-align:center;
+position: relative;
+z-index: 2;
 }
 
-/* Órbita contenedora para centrar el planeta y las palabras */
+/* Órbita contenedora */
 .orbita {
 position:relative;
-width:320px;
-height:320px;
+width:340px;
+height:340px;
 margin:40px auto;
 display:flex;
 justify-content:center;
 align-items:center;
 }
 
+/* El Planeta central */
 .planeta{
 width:200px;
 height:200px;
 border-radius:50%;
 overflow:hidden;
-border:5px solid rgba(255,255,255,.3);
-box-shadow:0 0 50px #ff4d6d;
-animation:latido 2s infinite;
+border:4px solid rgba(255,255,255,.4);
+box-shadow: 0 0 40px #ff4d6d, inset 0 0 20px rgba(0,0,0,0.6);
+animation:latido 2s infinite ease-in-out;
 cursor:pointer;
 z-index: 5;
 }
@@ -84,41 +70,44 @@ object-fit:cover;
 }
 
 @keyframes latido{
-50%{
-transform:scale(1.05);
-}
+0%, 100% { transform:scale(1); }
+50%{ transform:scale(1.06); }
 }
 
-/* Estilo para las letras que orbitan */
+/* Palabras orbitando */
 .palabra{
 position:absolute;
 font-size:16px;
 color:#ffb3c6;
 font-weight:bold;
 white-space: nowrap;
-/* Variables CSS dinámicas pasadas por JavaScript */
+text-shadow: 0 0 8px rgba(255, 77, 109, 0.8);
 animation: girar var(--duracion) linear infinite;
+z-index: 6;
 }
 
 @keyframes girar{
 from{
-transform: rotate(var(--anguloInicial)) translateX(140px) rotate(calc(-1 * var(--anguloInicial)));
+transform: rotate(var(--anguloInicial)) translateX(150px) rotate(calc(-1 * var(--anguloInicial)));
 }
 to{
-transform: rotate(calc(var(--anguloInicial) + 360deg)) translateX(140px) rotate(calc(-1 * (var(--anguloInicial) + 360deg)));
+transform: rotate(calc(var(--anguloInicial) + 360deg)) translateX(150px) rotate(calc(-1 * (var(--anguloInicial) + 360deg)));
 }
 }
 
+/* Carta elegante translúcida */
 .carta{
 display:none;
 margin-top:30px;
-background:rgba(255,255,255,.08);
+background:rgba(10, 10, 30, 0.75);
 padding:25px;
 border-radius:20px;
-backdrop-filter:blur(10px);
--webkit-backdrop-filter:blur(10px);
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+border: 1px solid rgba(255, 255, 255, 0.1);
 line-height:1.9;
 text-align:left;
+box-shadow: 0 0 30px rgba(255, 77, 109, 0.2);
 }
 
 .foto{
@@ -127,13 +116,13 @@ max-width:320px;
 display:block;
 margin:20px auto;
 border-radius:20px;
-box-shadow:0 0 20px rgba(255,255,255,.3);
+box-shadow:0 0 25px rgba(255,255,255,.2);
 }
 
 h1{
 margin-top:20px;
 margin-bottom:10px;
-text-shadow: 0 0 15px rgba(255, 77, 109, 0.6);
+text-shadow: 0 0 20px #ff4d6d;
 }
 
 audio{
@@ -141,23 +130,23 @@ width:100%;
 max-width:450px;
 margin-top:20px;
 border-radius: 20px;
+opacity: 0.85;
 }
 </style>
 </head>
 
 <body>
 
-<div id="estrellas"></div>
+<canvas id="espacio-profundo"></canvas>
 
 <div class="container">
 
-<h1>🌌 Nuestra Galaxia ❤️</h1>
+<h1>🌌 Nuestro Universo ❤️</h1>
 
 <p>
-19 de abril ❤️ El día en que comenzó nuestra historia.
+❤️Un fecha como hoy Mi amor❤️
 </p>
 
-<!-- El universo interactivo con las palabras orbitando -->
 <div class="orbita" id="espacio-orbita">
     <div class="planeta" onclick="abrirCarta()">
         <img src="nuestra_foto.jpg" alt="Nuestra Foto">
@@ -174,57 +163,19 @@ border-radius: 20px;
 
 <h2>Para ti, mi amor ❤️</h2>
 
-<p>
-Hoy cumplimos dos meses juntos y quería hacer algo diferente para ti.
-</p>
-
-<p>
-Si alguien me preguntara qué ha sido lo mejor que me pasó últimamente, no tendría ninguna duda: tú.
-</p>
-
-<p>
-Desde que llegaste a mi vida, todo es más bonito, más cálido y más feliz. Estar contigo se ha convertido en lo mejor de mis días.
-</p>
-
-<p>
-Gracias por cada conversación, cada sonrisa, cada mensaje y cada momento que hemos compartido juntos.
-</p>
-
-<p>
-Me encanta escucharte, saber cómo estuvo tu día y seguir descubriendo poco a poco la increíble persona que eres.
-</p>
-
-<p>
-Hay canciones que me recuerdan a ti, lugares que me hacen pensar en ti y momentos que son especiales simplemente porque tú formas parte de ellos.
-</p>
-
-<p>
-Entre millones de personas tuve la suerte de encontrarte a ti, y sinceramente no cambiaría eso por nada.
-</p>
-
-<p>
-No sé cómo lo hiciste, pero llegaste y te convertiste en lo más bonito que tengo.
-</p>
-
-<p>
-Gracias por tu cariño, por tu paciencia, por tu confianza y por permitirme formar parte de tu vida.
-</p>
-
-<p>
-Quizás llevamos poco tiempo juntos, pero han sido suficientes para crear recuerdos que guardaré siempre con mucho cariño.
-</p>
-
-<p>
-No sé qué nos espera en el futuro, pero sí sé que quiero seguir compartiendo momentos contigo y seguir construyendo recuerdos hermosos a tu lado.
-</p>
-
-<p>
-Gracias por estos dos meses tan especiales.
-</p>
-
-<p>
-Y gracias, sobre todo, porque conocerte fue una de las mejores cosas que me pasó este año. ❤️
-</p>
+<p>Hoy cumplimos dos meses juntos y quería hacer algo diferente para ti.</p>
+<p>Si alguien me preguntara qué ha sido lo mejor que me pasó últimamente, no tendría ninguna duda: tú.</p>
+<p>Desde que llegaste a mi vida, todo es más bonito, más cálido y más feliz. Estar contigo se ha convertido en lo mejor de mis días.</p>
+<p>Gracias por cada conversación, cada sonrisa, cada mensaje y cada momento que hemos compartido juntos.</p>
+<p>Me encanta escucharte, saber cómo estuvo tu día y seguir descubriendo poco a poco la increíble persona que eres.</p>
+<p>Hay canciones que me recuerdan a ti, lugares que me hacen pensar en ti y momentos que son especiales simplemente porque tú formas parte de ellos.</p>
+<p>Entre millones de personas tuve la suerte de encontrarte a ti, y sinceramente no cambiaría eso por nada.</p>
+<p>No sé cómo lo hiciste, pero llegaste y te convertiste en lo más bonito que tengo.</p>
+<p>Gracias por tu cariño, por tu paciencia, por tu confianza y por permitirme formar parte de tu vida.</p>
+<p>Quizás llevamos poco tiempo juntos, pero han sido suficientes para crear recuerdos que guardaré siempre con mucho cariño.</p>
+<p>No sé qué nos espera en el futuro, pero sí sé que quiero seguir compartiendo momentos contigo y seguir construyendo recuerdos hermosos a tu lado.</p>
+<p>Gracias por estos dos meses tan especiales.</p>
+<p>Y gracias, sobre todo, porque conocerte fue una de las mejores cosas que me pasó este año. ❤️</p>
 
 <h3 style="text-align:center;margin-top:20px;">
 ❤️ Te quiero muchísimo ❤️
@@ -235,35 +186,181 @@ Y gracias, sobre todo, porque conocerte fue una de las mejores cosas que me pas�
 </div>
 
 <script>
-
 function abrirCarta(){
-    // Muestra la carta oculta
     const carta = document.getElementById("carta");
     carta.style.display = "block";
-    
-    // Pequeño retraso para que el navegador procese el bloque y haga el scroll perfecto hacia abajo
     setTimeout(() => {
         carta.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 100);
 }
 
-// --- GENERADOR DE ESTRELLAS DE FONDO ---
-const estrellasContainer = document.getElementById("estrellas");
+// --- SCRIPT DE COSMOS REALISTA AVANZADO ---
+const canvas = document.getElementById('espacio-profundo');
+const ctx = canvas.getContext('2d');
 
-for(let i=0;i<120;i++){
-    let e=document.createElement("div");
-    e.classList.add("estrella");
-    e.innerHTML=Math.random()>0.5?"⭐":"✨";
-    e.style.left=Math.random()*100+"vw";
-    e.style.fontSize=(10+Math.random()*20)+"px";
-    e.style.animationDuration=(5+Math.random()*10)+"s";
-    estrellasContainer.appendChild(e);
+let estrellas = [];
+let miniGalaxias = [];
+const centroX = () => canvas.width / 2;
+const centroY = () => canvas.height * 0.35; // Órbita detrás del planeta
+
+function redimensionar() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+redimensionar();
+window.addEventListener('resize', redimensionar);
+
+// Clase para Estrellas con Brillo Realista y Parpadeo Cúbico
+class EstrellaRealista {
+    constructor() {
+        this.reset();
+        // Distribuirlas aleatoriamente al inicio para que no salgan todas al mismo tiempo
+        let angulo = Math.random() * Math.PI * 2;
+        let distancia = Math.random() * Math.max(canvas.width, canvas.height) * 0.5;
+        this.x = centroX() + Math.cos(angulo) * distancia;
+        this.y = centroY() + Math.sin(angulo) * distancia;
+    }
+
+    reset() {
+        let angulo = Math.random() * Math.PI * 2;
+        let distancia = Math.max(canvas.width, canvas.height) * 0.6;
+        this.x = centroX() + Math.cos(angulo) * distancia;
+        this.y = centroY() + Math.sin(angulo) * distancia;
+        this.radio = Math.random() * 1.8 + 0.4;
+        this.velocidadBase = Math.random() * 0.8 + 0.4;
+        
+        // Colores estelares reales en base a temperatura espacial
+        const coloresValidos = [
+            'rgba(255, 255, 255, ',   // Blanco puro
+            'rgba(173, 216, 230, ',   // Azulada joven (Glow)
+            'rgba(255, 200, 210, ',   // Sutil Rosa/Fucsia amoroso
+            'rgba(255, 245, 220, '    // Gigante Amarilla cálida
+        ];
+        this.colorElegido = coloresValidos[Math.floor(Math.random() * coloresValidos.length)];
+        
+        this.faseParpadeo = Math.random() * Math.PI;
+        this.velocidadParpadeo = Math.random() * 0.04 + 0.01;
+    }
+
+    actualizar() {
+        let dx = centroX() - this.x;
+        let dy = centroY() - this.y;
+        let distancia = Math.sqrt(dx * dx + dy * dy);
+
+        if (distancia < 35) { 
+            this.reset();
+        } else {
+            // Atracción gravitatoria física simulada hacia el centro del Agujero Negro
+            let efectoGravedad = (300 / distancia) + this.velocidadBase; 
+            this.x += (dx / distancia) * efectoGravedad + (dy / distancia) * 0.4;
+            this.y += (dy / distancia) * efectoGravedad - (dx / distancia) * 0.4;
+        }
+
+        // Variación del brillo estelar
+        this.faseParpadeo += this.velocidadParpadeo;
+    }
+
+    dibujar() {
+        // Opacidad variable simulando titileo atmosférico real
+        let opacidad = 0.4 + Math.abs(Math.sin(this.faseParpadeo)) * 0.6;
+        
+        ctx.save();
+        // Dibujar el núcleo de la estrella
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radio, 0, Math.PI * 2);
+        ctx.fillStyle = this.colorElegido + opacidad + ')';
+        ctx.fill();
+
+        // Efecto Destello/Glow (Solo para estrellas medianas y grandes)
+        if (this.radio > 1.1) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radio * 3, 0, Math.PI * 2);
+            let gradienteDestello = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radio * 3);
+            gradienteDestello.addColorStop(0, this.colorElegido + (opacidad * 0.3) + ')');
+            gradienteDestello.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = gradienteDestello;
+            ctx.fill();
+        }
+        ctx.restore();
+    }
 }
 
-// --- GENERADOR DE PALABRAS EN ÓRBITA CIRCULAR ---
-const orbitaContainer = document.getElementById("espacio-orbita");
+// Clase para Nebulosas Espirales de fondo
+class MiniGalaxia {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radioMax = Math.random() * 50 + 30;
+        this.anguloRotacion = 0;
+        this.velocidadRotacion = (Math.random() * 0.01) + 0.003;
+        this.colorBase = Math.random() > 0.5 ? 'rgba(139, 92, 246, 0.12)' : 'rgba(236, 72, 153, 0.12)';
+    }
+    actualizar() {
+        this.anguloRotacion += this.velocidadRotacion;
+        this.y -= 0.15; // Flotan suavemente hacia arriba
+        if (this.y < -70) {
+            this.y = canvas.height + 70;
+            this.x = Math.random() * canvas.width;
+        }
+    }
+    dibujar() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.anguloRotacion);
+        
+        let gradiente = ctx.createRadialGradient(0, 0, 0, 0, 0, this.radioMax);
+        gradiente.addColorStop(0, this.colorBase.replace('0.12', '0.5'));
+        gradiente.addColorStop(0.4, this.colorBase);
+        gradiente.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = gradiente;
+        ctx.beginPath();
+        ctx.arc(0, 0, this.radioMax, 0, Math.PI * 2);
+        ctx.fill();
 
-// El mensaje desglosado en palabras que rodearán tu foto
+        // Brazos estelares de la galaxia de fondo
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+        for (let j = 0; j < 35; j++) {
+            let t = j / 35;
+            let a = t * Math.PI * 5;
+            let r = t * this.radioMax;
+            ctx.fillRect(Math.cos(a) * r, Math.sin(a) * r, 1.2, 1.2);
+            ctx.fillRect(-Math.cos(a) * r, -Math.sin(a) * r, 1.2, 1.2);
+        }
+        ctx.restore();
+    }
+}
+
+// Inicializar elementos cósmicos
+for (let i = 0; i < 160; i++) estrellas.push(new EstrellaRealista());
+for (let i = 0; i < 4; i++) miniGalaxias.push(new MiniGalaxia());
+
+function animarUniverso() {
+    // Fondo espacial profundo con persistencia suave
+    ctx.fillStyle = 'rgba(4, 4, 12, 0.25)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Brillo del Agujero Negro detrás del planeta
+    let cX = centroX();
+    let cY = centroY();
+    let brilloAgujero = ctx.createRadialGradient(cX, cY, 80, cX, cY, 190);
+    brilloAgujero.addColorStop(0, 'rgba(244, 63, 94, 0.32)'); // Horizonte de eventos rosa
+    brilloAgujero.addColorStop(0.4, 'rgba(124, 58, 237, 0.14)'); // Nebulosa púrpura exterior
+    brilloAgujero.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = brilloAgujero;
+    ctx.beginPath();
+    ctx.arc(cX, cY, 190, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Renderizar componentes
+    miniGalaxias.forEach(g => { g.actualizar(); g.dibujar(); });
+    estrellas.forEach(e => { e.actualizar(); e.dibujar(); });
+
+    requestAnimationFrame(animarUniverso);
+}
+animarUniverso();
+
+// --- GENERADOR DE PALABRAS EN ÓRBITA ---
+const orbitaContainer = document.getElementById("espacio-orbita");
 const listaPalabras = ["TE", "QUIERO", "MUCHÍSIMO", "MI", "AMOR", "❤️", "SIEMPRE", "JUNTOS", "✨"];
 const totalPalabras = listaPalabras.length;
 
@@ -271,17 +368,11 @@ listaPalabras.forEach((texto, index) => {
     let divPalabra = document.createElement("div");
     divPalabra.classList.add("palabra");
     divPalabra.textContent = texto;
-
-    // Distribución matemática perfecta en 360 grados para que no se amontonen
     let angulo = (360 / totalPalabras) * index;
-    
-    // Pasamos los valores dinámicos al CSS
     divPalabra.style.setProperty('--anguloInicial', angulo + 'deg');
-    divPalabra.style.setProperty('--duracion', '15s'); // Velocidad de rotación general
-
+    divPalabra.style.setProperty('--duracion', '16s');
     orbitaContainer.appendChild(divPalabra);
 });
-
 </script>
 
 </body>
