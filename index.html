@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🌌 Universo de Nuestro Amor ❤️</title>
+<title>🌌 Nuestro Universo Infinito ❤️</title>
 
 <style>
 *{
@@ -14,13 +14,13 @@ font-family:'Segoe UI',sans-serif;
 }
 
 body{
-background:#020208;
+background:#02020a;
 overflow-x:hidden;
 color:white;
 min-height:100vh;
 }
 
-/* Canvas para el fondo avanzado de galaxias, tulipanes y agujero negro */
+/* Canvas para todo el motor gráfico del espacio */
 #espacio-profundo{
 position:fixed;
 top:0;
@@ -31,8 +31,8 @@ z-index:-1;
 }
 
 .container{
-width:90%;
-max-width:900px;
+width:92%;
+max-width:850px;
 margin:30px auto;
 text-align:center;
 position: relative;
@@ -50,15 +50,15 @@ justify-content:center;
 align-items:center;
 }
 
-/* El Planeta central */
+/* El Planeta central con super glow */
 .planeta{
-width:200px;
-height:200px;
+width:210px;
+height:210px;
 border-radius:50%;
 overflow:hidden;
-border:4px solid rgba(255,255,255,.4);
-box-shadow: 0 0 40px #ff4d6d, inset 0 0 20px rgba(0,0,0,0.6);
-animation:latido 2s infinite ease-in-out;
+border:4px solid rgba(255,255,255,.5);
+box-shadow: 0 0 50px #ff4d6d, inset 0 0 30px rgba(0,0,0,0.8);
+animation:latido 2.5s infinite ease-in-out;
 cursor:pointer;
 z-index: 5;
 }
@@ -70,67 +70,83 @@ object-fit:cover;
 }
 
 @keyframes latido{
-0%, 100% { transform:scale(1); }
-50%{ transform:scale(1.06); }
+0%, 100% { transform:scale(1); filter: drop-shadow(0 0 15px #ff4d6d); }
+50%{ transform:scale(1.05); filter: drop-shadow(0 0 30px #ff7aa2); }
 }
 
-/* Palabras orbitando */
+/* Palabras orbitando con efecto estelar */
 .palabra{
 position:absolute;
 font-size:16px;
 color:#ffb3c6;
 font-weight:bold;
 white-space: nowrap;
-text-shadow: 0 0 8px rgba(255, 77, 109, 0.8);
+text-shadow: 0 0 10px rgba(255, 77, 109, 0.9), 0 0 20px rgba(255, 77, 109, 0.4);
 animation: girar var(--duracion) linear infinite;
 z-index: 6;
 }
 
 @keyframes girar{
 from{
-transform: rotate(var(--anguloInicial)) translateX(150px) rotate(calc(-1 * var(--anguloInicial)));
+transform: rotate(var(--anguloInicial)) translateX(155px) rotate(calc(-1 * var(--anguloInicial)));
 }
 to{
-transform: rotate(calc(var(--anguloInicial) + 360deg)) translateX(150px) rotate(calc(-1 * (var(--anguloInicial) + 360deg)));
+transform: rotate(calc(var(--anguloInicial) + 360deg)) translateX(155px) rotate(calc(-1 * (var(--anguloInicial) + 360deg)));
 }
 }
 
-/* Carta elegante translúcida */
+/* Carta elegante translúcida estilo Cyber-Romántico */
 .carta{
 display:none;
-margin-top:30px;
-background:rgba(10, 10, 30, 0.75);
-padding:25px;
-border-radius:20px;
-backdrop-filter:blur(15px);
--webkit-backdrop-filter:blur(15px);
-border: 1px solid rgba(255, 255, 255, 0.1);
-line-height:1.9;
+margin-top:45px;
+background:rgba(7, 7, 20, 0.82);
+padding:35px 25px;
+border-radius:24px;
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+border: 1px solid rgba(255, 77, 109, 0.25);
+line-height:2;
 text-align:left;
-box-shadow: 0 0 30px rgba(255, 77, 109, 0.2);
+box-shadow: 0 0 40px rgba(255, 77, 109, 0.15), inset 0 0 20px rgba(255,255,255,0.02);
+animation: abrirSuave 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes abrirSuave {
+from { opacity: 0; transform: translateY(40px) scale(0.98); }
+to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .foto{
-width:90%;
-max-width:320px;
+width:95%;
+max-width:340px;
 display:block;
-margin:20px auto;
+margin:25px auto;
 border-radius:20px;
-box-shadow:0 0 25px rgba(255,255,255,.2);
+border: 2px solid rgba(255,255,255,0.2);
+box-shadow:0 0 30px rgba(255, 77, 109, 0.3);
 }
 
-h1{
+h1 {
 margin-top:20px;
 margin-bottom:10px;
-text-shadow: 0 0 20px #ff4d6d;
+font-size: 2.3rem;
+text-shadow: 0 0 20px #ff4d6d, 0 0 40px #ff7aa2;
+letter-spacing: 1px;
+}
+
+.subtitulo {
+color: #ffb3c6;
+text-shadow: 0 0 8px rgba(255, 179, 198, 0.4);
+font-weight: 500;
 }
 
 audio{
 width:100%;
 max-width:450px;
-margin-top:20px;
-border-radius: 20px;
-opacity: 0.85;
+margin: 25px auto 10px auto;
+display: block;
+border-radius: 30px;
+box-shadow: 0 0 15px rgba(255,255,255,0.1);
 }
 </style>
 </head>
@@ -141,11 +157,8 @@ opacity: 0.85;
 
 <div class="container">
 
-<h1>🌌 Nuestro Aniversario ❤️</h1>
-
-<p>
-❤️Una fecha como hoy mi amor❤️
-</p>
+<h1>🌌 Nuestro Aniversario❤️</h1>
+<p class="subtitulo">❤️ Una fecha como hoy mi amor❤️</p>
 
 <div class="orbita" id="espacio-orbita">
     <div class="planeta" onclick="abrirCarta()">
@@ -161,7 +174,7 @@ opacity: 0.85;
 
 <img src="ella.jpg" class="foto" alt="Ella">
 
-<h2>Para ti, mi amor ❤️</h2>
+<h2 style="text-align: center; color: #ff7aa2; text-shadow: 0 0 10px rgba(255,122,162,0.5); margin-bottom: 20px;">Para ti, mi amor ❤️</h2>
 
 <p>Hoy cumplimos dos meses juntos y quería hacer algo diferente para ti.</p>
 <p>Si alguien me preguntara qué ha sido lo mejor que me pasó últimamente, no tendría ninguna duda: tú.</p>
@@ -177,7 +190,7 @@ opacity: 0.85;
 <p>Gracias por estos dos meses tan especiales.</p>
 <p>Y gracias, sobre todo, porque conocerte fue una de las mejores cosas que me pasó este año. ❤️</p>
 
-<h3 style="text-align:center;margin-top:20px;">
+<h3 style="text-align:center;margin-top:30px; font-size: 1.6rem; color: #ff4d6d; text-shadow: 0 0 15px #ff4d6d;">
 ❤️ Te quiero muchísimo ❤️
 </h3>
 
@@ -191,16 +204,17 @@ function abrirCarta(){
     carta.style.display = "block";
     setTimeout(() => {
         carta.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 100);
+    }, 150);
 }
 
-// --- SCRIPT DE COSMOS REALISTA CON JARDÍN DE TULIPANES ---
+// --- MOTOR COSMÓLOGICO AVANZADO ---
 const canvas = document.getElementById('espacio-profundo');
 const ctx = canvas.getContext('2d');
 
 let estrellas = [];
-let miniGalaxias = [];
+let nebulosas = [];
 let tulipanes = [];
+let estrellaFugaz = null;
 
 const centroX = () => canvas.width / 2;
 const centroY = () => canvas.height * 0.35; 
@@ -212,182 +226,155 @@ function redimensionar() {
 redimensionar();
 window.addEventListener('resize', redimensionar);
 
-// Clase para Estrellas con Brillo Realista y Parpadeo
+// 1. Estrellas Realistas
 class EstrellaRealista {
-    constructor() {
-        this.reset();
-        let angulo = Math.random() * Math.PI * 2;
-        let distancia = Math.random() * Math.max(canvas.width, canvas.height) * 0.5;
-        this.x = centroX() + Math.cos(angulo) * distancia;
-        this.y = centroY() + Math.sin(angulo) * distancia;
-    }
-
+    constructor() { this.reset(); this.y = Math.random() * canvas.height; }
     reset() {
-        let angulo = Math.random() * Math.PI * 2;
-        let distancia = Math.max(canvas.width, canvas.height) * 0.6;
-        this.x = centroX() + Math.cos(angulo) * distancia;
-        this.y = centroY() + Math.sin(angulo) * distancia;
-        this.radio = Math.random() * 1.6 + 0.4;
-        this.velocidadBase = Math.random() * 0.8 + 0.4;
-        
-        const coloresValidos = ['rgba(255, 255, 255, ', 'rgba(173, 216, 230, ', 'rgba(255, 200, 210, '];
-        this.colorElegido = coloresValidos[Math.floor(Math.random() * coloresValidos.length)];
-        this.faseParpadeo = Math.random() * Math.PI;
-        this.velocidadParpadeo = Math.random() * 0.04 + 0.01;
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radio = Math.random() * 1.5 + 0.3;
+        this.color = ['#fff', '#b3e5fc', '#ffc8d2', '#fff5cc'][Math.floor(Math.random() * 4)];
+        this.fase = Math.random() * Math.PI;
+        this.vParpadeo = Math.random() * 0.03 + 0.01;
     }
-
-    actualizar() {
-        let dx = centroX() - this.x;
-        let dy = centroY() - this.y;
-        let distancia = Math.sqrt(dx * dx + dy * dy);
-
-        if (distancia < 35) { 
-            this.reset();
-        } else {
-            let efectoGravedad = (250 / distancia) + this.velocidadBase; 
-            this.x += (dx / distancia) * efectoGravedad + (dy / distancia) * 0.4;
-            this.y += (dy / distancia) * efectoGravedad - (dx / distancia) * 0.4;
-        }
-        this.faseParpadeo += this.velocidadParpadeo;
-    }
-
+    actualizar() { this.fase += this.vParpadeo; }
     dibujar() {
-        let opacidad = 0.4 + Math.abs(Math.sin(this.faseParpadeo)) * 0.6;
-        ctx.save();
+        let opacidad = 0.3 + Math.abs(Math.sin(this.fase)) * 0.7;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radio, 0, Math.PI * 2);
-        ctx.fillStyle = this.colorElegido + opacidad + ')';
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = opacidad;
         ctx.fill();
-        ctx.restore();
+        ctx.globalAlpha = 1;
     }
 }
 
-// NUEVA CLASE: Tulipanes Cósmicos Dibujados con Vectores
-class TulipánFlotante {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = canvas.height + (Math.random() * 200);
-        this.tamano = Math.random() * 12 + 10; // Tamaño de la flor
-        this.velocidadY = Math.random() * 0.6 + 0.3; // Velocidad de subida
-        this.oscilacionX = Math.random() * 0.02; // Movimiento de lado a lado
-        this.faseX = Math.random() * 100;
-        this.anguloRotacion = (Math.random() - 0.5) * 0.3;
-        this.colorFlor = Math.random() > 0.5 ? '#ff4d6d' : '#ff7aa2'; // Rosa o Rojo tulipán
-    }
-
-    actualizar() {
-        this.y -= this.velocidadY;
-        this.faseX += this.oscilacionX;
-        this.x += Math.sin(this.faseX) * 0.25;
-
-        // Si sale por arriba, se reinicia abajo
-        if (this.y < -50) {
-            this.y = canvas.height + 50;
-            this.x = Math.random() * canvas.width;
-        }
-    }
-
-    dibujar() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.anguloRotacion);
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = this.colorFlor;
-
-        // Dibujar el tallo verde sutil
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.quadraticCurveTo(5, this.tamano * 0.8, 2, this.tamano * 1.5);
-        ctx.strokeStyle = '#4ade80';
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-
-        // Pétalo izquierdo
-        ctx.beginPath();
-        ctx.fillStyle = this.colorFlor;
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(-this.tamano * 0.6, -this.tamano * 0.4, -this.tamano * 0.5, -this.tamano * 1.2, 0, -this.tamano);
-        ctx.bezierCurveTo(-this.tamano * 0.2, -this.tamano * 0.6, -this.tamano * 0.1, -this.tamano * 0.2, 0, 0);
-        ctx.fill();
-
-        // Pétalo derecho
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(this.tamano * 0.6, -this.tamano * 0.4, this.tamano * 0.5, -this.tamano * 1.2, 0, -this.tamano);
-        ctx.bezierCurveTo(this.tamano * 0.2, -this.tamano * 0.6, this.tamano * 0.1, -this.tamano * 0.2, 0, 0);
-        ctx.fill();
-
-        // Pétalo central principal
-        ctx.beginPath();
-        ctx.fillStyle = this.colorFlor == '#ff4d6d' ? '#ff7aa2' : '#ffb3c6'; // Tono ligeramente más claro para el centro
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(-this.tamano * 0.3, -this.tamano * 0.3, -this.tamano * 0.3, -this.tamano * 1.3, 0, -this.tamano * 1.1);
-        ctx.bezierCurveTo(this.tamano * 0.3, -this.tamano * 1.3, this.tamano * 0.3, -this.tamano * 0.3, 0, 0);
-        ctx.fill();
-
-        ctx.restore();
-    }
-}
-
-// Clase para Nebulosas de fondo
-class MiniGalaxia {
+// 2. Sistema de Nubes de Nebulosas Orgánicas
+class Nebulosa {
     constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.radioMax = Math.random() * 50 + 30;
-        this.anguloRotacion = 0;
-        this.velocidadRotacion = (Math.random() * 0.01) + 0.003;
-        this.colorBase = 'rgba(139, 92, 246, 0.1)';
+        this.r = Math.random() * 150 + 100;
+        this.color = Math.random() > 0.5 ? 'rgba(236, 72, 153, 0.04)' : 'rgba(124, 58, 237, 0.04)';
+        this.v = Math.random() * 0.2 + 0.05;
     }
     actualizar() {
-        this.anguloRotacion += this.velocidadRotacion;
-        this.y -= 0.1;
-        if (this.y < -70) {
-            this.y = canvas.height + 70;
-            this.x = Math.random() * canvas.width;
-        }
+        this.y -= this.v;
+        if(this.y < -this.r) { this.y = canvas.height + this.r; this.x = Math.random() * canvas.width; }
+    }
+    dibujar() {
+        let g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.r);
+        g.addColorStop(0, this.color);
+        g.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = g;
+        ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI*2); ctx.fill();
+    }
+}
+
+// 3. Tulipanes y Pétalos Cósmicos
+class ElementoBotanico {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height + (Math.random() * 300);
+        this.tipo = Math.random() > 0.4 ? 'petalo' : 'tulipan'; // Distribución mixta
+        this.tamano = Math.random() * 10 + 8;
+        this.vY = Math.random() * 0.5 + 0.4;
+        this.osc = Math.random() * 0.02 + 0.01;
+        this.fase = Math.random() * 50;
+        this.rot = Math.random() * Math.PI;
+        this.vRot = (Math.random() - 0.5) * 0.02;
+        this.color = Math.random() > 0.5 ? '#ff4d6d' : '#ff7aa2';
+    }
+    actualizar() {
+        this.y -= this.vY;
+        this.fase += this.osc;
+        this.x += Math.sin(this.fase) * 0.3;
+        this.rot += this.vRot;
+        if (this.y < -40) { this.y = canvas.height + 40; this.x = Math.random() * canvas.width; }
     }
     dibujar() {
         ctx.save();
         ctx.translate(this.x, this.y);
-        ctx.rotate(this.anguloRotacion);
-        let gradiente = ctx.createRadialGradient(0, 0, 0, 0, 0, this.radioMax);
-        gradiente.addColorStop(0, 'rgba(236, 72, 153, 0.3)');
-        gradiente.addColorStop(0.5, this.colorBase);
-        gradiente.addColorStop(1, 'rgba(0,0,0,0)');
-        ctx.fillStyle = gradiente;
-        ctx.beginPath();
-        ctx.arc(0, 0, this.radioMax, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.rotate(this.rot);
+        ctx.shadowBlur = 8; ctx.shadowColor = this.color;
+
+        if (this.tipo === 'tulipan') {
+            // Tallo sutil
+            ctx.beginPath(); ctx.moveTo(0, 0); ctx.quadraticCurveTo(4, this.tamano*0.8, 2, this.tamano*1.4);
+            ctx.strokeStyle = '#4ade80'; ctx.lineWidth = 1; ctx.stroke();
+            // Flor
+            ctx.fillStyle = this.color;
+            ctx.beginPath(); ctx.arc(-this.tamano*0.25, -this.tamano*0.4, this.tamano*0.4, 0, Math.PI*2); ctx.fill();
+            ctx.beginPath(); ctx.arc(this.tamano*0.25, -this.tamano*0.4, this.tamano*0.4, 0, Math.PI*2); ctx.fill();
+            ctx.beginPath(); ctx.arc(0, -this.tamano*0.5, this.tamano*0.35, 0, Math.PI*2); ctx.fill();
+        } else {
+            // Solo un hermoso pétalo flotando libremente
+            ctx.fillStyle = this.color;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, this.tamano*0.6, this.tamano*0.35, Math.PI/4, 0, Math.PI*2);
+            ctx.fill();
+        }
         ctx.restore();
     }
 }
 
-// Inicializar elementos cósmicos y botánicos
-for (let i = 0; i < 140; i++) estrellas.push(new EstrellaRealista());
-for (let i = 0; i < 3; i++) miniGalaxias.push(new MiniGalaxia());
-for (let i = 0; i < 12; i++) tulipanes.push(new TulipánFlotante()); // 12 tulipanes flotantes en pantalla
+// 4. Mecánica de Estrellas Fugaces
+function dispararEstrellaFugaz() {
+    if (estrellaFugaz === null && Math.random() < 0.005) {
+        estrellaFugaz = {
+            x: Math.random() * canvas.width,
+            y: Math.random() * (canvas.height * 0.5),
+            dx: Math.random() * 4 + 4,
+            dy: Math.random() * 2 + 2,
+            largo: Math.random() * 80 + 50,
+            alfa: 1
+        };
+    }
+}
+
+function actualizarYDibujarFugaz() {
+    if (!estrellaFugaz) return;
+    estrellaFugaz.x += estrellaFugaz.dx;
+    estrellaFugaz.y += estrellaFugaz.dy;
+    estrellaFugaz.alfa -= 0.02;
+
+    if (estrellaFugaz.alfa <= 0) {
+        estrellaFugaz = null;
+    } else {
+        ctx.save();
+        ctx.strokeStyle = `rgba(255, 255, 255, ${estrellaFugaz.alfa})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(estrellaFugaz.x, estrellaFugaz.y);
+        ctx.lineTo(estrellaFugaz.x - estrellaFugaz.largo, estrellaFugaz.y - (estrellaFugaz.largo * 0.5));
+        ctx.stroke();
+        ctx.restore();
+    }
+}
+
+// Inicializar componentes
+for (let i = 0; i < 120; i++) estrellas.push(new EstrellaRealista());
+for (let i = 0; i < 5; i++) nebulosas.push(new Nebulosa());
+for (let i = 0; i < 18; i++) tulipanes.push(new ElementoBotanico());
 
 function animarUniverso() {
-    ctx.fillStyle = 'rgba(4, 4, 12, 0.25)';
+    ctx.fillStyle = 'rgba(2, 2, 8, 0.35)'; // Persistencia espacial para estelas limpias
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Agujero Negro detrás del planeta
-    let cX = centroX();
-    let cY = centroY();
-    let brilloAgujero = ctx.createRadialGradient(cX, cY, 80, cX, cY, 190);
-    brilloAgujero.addColorStop(0, 'rgba(244, 63, 94, 0.3)'); 
-    brilloAgujero.addColorStop(0.5, 'rgba(124, 58, 237, 0.12)'); 
-    brilloAgujero.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = brilloAgujero;
-    ctx.beginPath();
-    ctx.arc(cX, cY, 190, 0, Math.PI * 2);
-    ctx.fill();
+    // Agujero negro gravitacional/Aura romántica central
+    let cX = centroX(), cY = centroY();
+    let g = ctx.createRadialGradient(cX, cY, 85, cX, cY, 200);
+    g.addColorStop(0, 'rgba(255, 77, 109, 0.25)'); 
+    g.addColorStop(0.6, 'rgba(124, 58, 237, 0.08)'); 
+    g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cX, cY, 200, 0, Math.PI * 2); ctx.fill();
 
-    // Renderizar componentes
-    miniGalaxias.forEach(g => { g.actualizar(); g.dibujar(); });
+    // Actualizar y Renderizar
+    nebulosas.forEach(n => { n.actualizar(); n.dibujar(); });
     estrellas.forEach(e => { e.actualizar(); e.dibujar(); });
-    tulipanes.forEach(t => { t.actualizar(); t.dibujar(); }); // Dibujar el hermoso jardín flotante
+    dispararEstrellaFugaz();
+    actualizarYDibujarFugaz();
+    tulipanes.forEach(t => { t.actualizar(); t.dibujar(); });
 
     requestAnimationFrame(animarUniverso);
 }
@@ -395,7 +382,7 @@ animarUniverso();
 
 // --- GENERADOR DE PALABRAS EN ÓRBITA ---
 const orbitaContainer = document.getElementById("espacio-orbita");
-const listaPalabras = ["TE", "QUIERO", "MUCHÍSIMO", "MI", "AMOR", "❤️", "SIEMPRE", "JUNTOS", "✨"];
+const listaPalabras = ["TE", "QUIERO", "MUCHÍSIMO", "MI", "AMOR", "❤️", "✨"];
 const totalPalabras = listaPalabras.length;
 
 listaPalabras.forEach((texto, index) => {
